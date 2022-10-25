@@ -1,11 +1,64 @@
 ---
 title: "Final Grade Reflection"
-author: "Your Name Goes Here"
+author: "Fiona Norton"
 format: pdf
 editor: visual
 ---
 
-In this document, you make a data-based argument for the grade you've earned in this course. Your argument should include evidence from the supporting artifacts you've provided. 
+In this document, you make a data-based argument for the grade you've earned in this course. Your argument should include evidence from the supporting artifacts you've provided.
 
-The output document should be a PDF or a Word Document, as it should be a **maximum** of 2-pages. 
----
+The output document should be a PDF or a Word Document, as it should be a **maximum** of 2-pages.
+
+# Week 6 Reflection
+
+## Accomplishment of Learning Targets 
+
+Working with Data:
+WD-1: I can import data from a variety of formats (e.g., csv, xlsx, txt, etc.).
+WD-2: I can select necessary columns from a dataset.
+WD-3: I can filter rows from a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date).
+WD-4: I can modify existing variables and create new variables in a dataframe for a variety of data types.
+WD-5: I can use mutating joins to combine multiple dataframes.
+WD-6: I can use filtering joins to filter rows from a dataframe.
+
+Data Visualization and Summarization:
+DVS-1: I can create visualizations for a variety of variable types.
+DVS-2: I use plot modifications to make my visualization clear to the reader.
+DVS-3: I show creativity in my visualizations
+DVS-4: I can calculate numerical summaries of
+variables.
+DVS-5: I can find summaries of variables across
+multiple groups.
+DVS-6: I can create tables which make my
+summaries clear to the reader.
+DVS-7: I show creativity in my tables.
+
+Reproducability
+R-1: I can create a reproducible analysis using RStudio projects, Quarto documents, and the here package.
+R-2: I can write well documented and tidy code.
+R-3: I can write robust programs that are resistant to
+changes in inputs.
+
+Program Efficiency
+PE-1: I can write concise code which does not repeat itself.
+
+PE-3:I can use iteration to reduce repetition in my code.
+PE-4: I can use modern tools when carrying out my analysis.
+
+## Evidence of Continued Learning 
+
+### Extending My Thinking
+
+### Revising My Thinking
+
+## Growth as a Team Member 
+
+### Collabaorative Group Work 
+
+### Peer Code Review
+
+## Attention to Personal Goals
+
+
+
+
