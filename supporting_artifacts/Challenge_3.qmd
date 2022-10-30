@@ -1,0 +1,83 @@
+---
+title: "Lab 3 Challenge"
+execute:
+  echo: true
+  error: true 
+author: "Fiona Norton"
+format: 
+  html: 
+    code-fold: true
+    code-summary: "Show code"
+    theme: "united"
+editor: visual
+---
+
+
+## Setup
+```{r}
+#| message: false
+library(tidyverse)
+library(here)
+library(ggplot2)
+library(ggridges)
+hiphop <- read_csv(here :: here("datasets", "hiphop.csv"))
+#change all character variables to factors 
+hiphop_clean <- hiphop |> 
+  mutate(across(where(is.character), as.factor))
+hiphop_clean <- hiphop_clean |> 
+  mutate(ethnic_class = if_else(ethnic != "white", "non-white", "white"))
+# spec(hiphop)
+```
+
+# New Dataset
+
+Compare the number of artists participants reported liking for each genre. Determine which music genre most differentiates each of the demographic groups provided. Which genre had much higher average (mean or median) reported artists in one group than the other?
+
+```{r}
+hiphop_new <- hiphop |> 
+  mutate(ethnic_class = if_else(ethnic != "white", "non-white", "white")) |> 
+  select(c(subj:ethnic_class))
+```
+
+## Male vs. Female
+
+```{r}
+hiphop_new |> 
+  group_by(sex) |> 
+  summarize(across(intl:hiphop, mean, na.rm = TRUE)) |> 
+  summarize(across(intl:hiphop, diff, na.rm = TRUE))
+  #summarize(across(intl:hiphop, median, na.rm = TRUE))
+```
+
+The largest difference in the average number of artists participants reported liking in each genre for males versus females is the difference in the rock genre. The average number of artists in this genre for females is 1.93, while for males it is 3.06.
+
+## White vs. Non-White
+
+```{r}
+hiphop_new |> 
+  group_by(ethnic_class) |> 
+  summarize(across(intl:hiphop, mean, na.rm = TRUE)) |>  
+  summarize(across(intl:hiphop, diff, na.rm = TRUE))
+```
+
+The largest difference in the average number of artists participants reported liking in each genre for whites versus nonwhites is also the difference in the rock genre. The average number of artists in this genre for whites is 2.57, while for non-whites it is 2.57.
+
+# Study Design Critique
+
+I believe there are a few issues with the design of this study that could cause readers to be  skeptical of the analysis and results of the data. First off, the 168 participants were all enrolled in at least one linguistics, sociology, or music class, which means these students are likely more well versed with language and/or music than the average. Also there are significantly more white participants in the study compared to non-white participants (135 compared to 33). 
+
+```{r}
+hiphop_clean |> 
+  distinct(subj, .keep_all = TRUE) |> 
+  group_by(ethnic_class) |> 
+  count()
+```
+
+# Revision Reflections 
+
+Through my revisions I learned about the "diff" function! Until now I was getting separate means and then determining the largest difference in my head but now I am able to use the diff function, which will print all of the differences for me. This is very useful and will help me with questions like this in the future. 
+
+
+
+
+
