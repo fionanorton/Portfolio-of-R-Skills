@@ -1,0 +1,187 @@
+---
+title: "Lab 4"
+execute:
+  echo: true
+  error: true 
+author: "Fiona Norton"
+format: 
+  html: 
+    code-fold: true
+    code-summary: "Show code"
+    theme: "simplex"
+editor: visual
+---
+
+# Introduction and Setup
+
+## Setup
+
+```{r}
+#| message: false
+library(tidyverse)
+library(tidyselect)
+library(here)
+avocados <- read_csv(here::here("datasets", "avocado.csv"))
+```
+
+## 1. Describe the Data
+
+The data set was taken from the Hass Avocado Board website in May 2018. The data provide information on the average price of different types and sizes of avocados in locations across the U.S. 
+
+## 2. Clean the data
+
+```{r}
+#| message: false
+avocados_clean <- avocados |> 
+  rename("Extra Large" = `4770`,
+         "Large" = `4225`,
+         "Small" = `4046`) 
+```
+
+```{r}
+#| message: false
+#| include: false
+avocados_clean |> 
+  distinct(region) 
+  #print(n=54)
+```
+
+```{r}
+#| message: false
+state <- data.frame("state" = c("California", "SouthCarolina"))
+
+region <- data.frame("region" = c("Midsouth", "Northeast", "Plains", "SouthCentral","Southeast", "West", "GreatLakes"))
+```
+
+```{r}
+avocados_cities <- avocados_clean |> 
+  anti_join(state, by = c("region" = "state")) |> 
+  anti_join(region, by = "region") |> 
+  filter(region != "TotalUS")
+```
+
+```{r}
+avocados_region <- avocados_clean |> 
+  semi_join(region, by = "region")
+```
+
+# Exercises 
+
+## 3. Which major region sold the most organic, small Hass avocados in 2017?
+
+```{r}
+avocados_region |> 
+  filter(type == "organic",
+         year == 2017) |> 
+  select(Small, region) |> 
+  group_by(region) |> 
+  summarize(mean = mean(Small)) |> 
+  slice_max(mean)
+```
+
+The West sold the most small Hass avocados in 2017.
+
+
+## 4. In which month is the highest volume of avocado sales?
+
+```{r}
+avocados_clean <- avocados_clean |> 
+  separate(col = Date, 
+           into = c("Year", "Month", "Day"),
+           sep = "-",
+           convert = TRUE,
+           remove = FALSE)
+
+avocados_clean |> 
+  group_by(Month) |> 
+  summarize(mean = mean(`Total Volume`)) |> 
+  slice_max(mean)
+```
+
+February was the month with the highest volume of avocados sold.
+
+## 5. Which metro area regions sold the most total avocados? Plot side-by-side boxplots of total volume for only the five regions with the highest averages for the Total Volume variable.
+
+```{r}
+avocados_cities |> 
+  group_by(region) |> 
+  summarize(mean = mean(`Total Volume`)) |> 
+  slice_max(mean, n = 5)
+```
+
+The five regions that sold the most avocados are Los Angeles, New York, Dallas/Ft.Worth, Houston and Pheonix/Tucson.
+
+```{r} 
+#| message: false
+top5_regions <- avocados_cities |> 
+  group_by(region) |> 
+  summarize("Avg_total_volume" = mean(`Total Volume`)) |> 
+  slice_max(Avg_total_volume, n = 5)
+
+avocados_top5 <- avocados_cities |> 
+  semi_join(top5_regions, by = "region")
+```
+
+```{r}
+avocados_top5 |> 
+  ggplot(mapping = aes(x = `Total Volume`, y = region, color = region)) +
+  geom_boxplot() +
+  labs(x = "Total Volume of Avocados Sold", y = "Top 5 Region") +
+  theme(legend.position = "none")
+```
+
+# Reshaping
+
+The following four California regions are in this dataset: "LosAngeles", "SanDiego", "Sacramento", and "SanFrancisco". Answer the following questions about these California regions only.
+
+
+## 6. In which regions is the price of organic versus conventional avocados most different? Support your answer with a few summary statistics and a visualization.
+
+```{r}
+cali_regions <- data.frame("region" = c("LosAngeles", "SanDiego", "Sacramento", "SanFrancisco"))
+
+avocados_cali <- avocados_cities |> 
+  semi_join(cali_regions, by = "region") 
+
+avocados_cali |> 
+  group_by(region, type) |> 
+  summarize(avg.price = mean(AveragePrice)) |> 
+  summarize(difference = diff(avg.price), na.rm = TRUE) |> 
+  ggplot(mapping = aes(x = region, y = difference, fill = region)) +
+  geom_col() +
+  labs(x= "California Region", y = "Cost Difference", 
+       title = "Conventional vs. Organic Avocado Prices in California") +
+  theme(legend.position = "none")
+```
+
+The California region with the largest difference in price for organic avocados versus conventional avocados is San Francisco.
+
+## 7. The plot shows, for all four California regions, the proportion of the mean Hass avocado sales that are small, large, or extra large; conventional vs. organic. Recreate the plot.
+
+```{r}
+avocados_cali_long <- avocados_cali |> 
+  pivot_longer(cols = c(Small, Large, `Extra Large`), 
+               names_to = "Avocado Size", 
+               values_to = "Volume") |> 
+  mutate("Proportion" = Volume / mean(`Total Volume`))
+```
+
+```{r}
+avocados_cali_long |> 
+  ggplot(mapping = aes(x = region, y = Proportion, fill = `Avocado Size`)) + 
+  geom_bar(position = position_fill(reverse = TRUE), stat = "identity") +
+  facet_wrap(~type) +
+  guides(x = guide_axis(n.dodge = 2))
+```
+
+
+# Revision Reflections
+
+My revisions for this lab have helped me to fine tune my joining skills and make my code more efficient. I realized that some of my code chunks were printing unnecessary information in my rendered quarto document so I looked through the functions that can be put after a "#|" at the beginning of a code chunk and found the "include" option. This allows me to specify whether or not any of the output should be included! I also figured out some ways to make my code more efficient such as using the "n =" argument in the slice_max/slice_min functions that allows me to display the top n of bottom n rows in a dataframe. Understanding this allowed me to create a "top 5 regions: dataframe without having to type out the names of the regions, and I was ultimately able to delete one of my previous steps in creating the data visualization for these regions. Another way that I was able to make my code more efficient was including the diff() function to display the differences in mean between organic and conventional avocados across California regions, I was then able to create a plot of these differences. Finally I learned how to make adjustments like "n.dodge =" and "labs()" to make my data visualizations easier to understand. 
+
+
+
+
+
+
+
