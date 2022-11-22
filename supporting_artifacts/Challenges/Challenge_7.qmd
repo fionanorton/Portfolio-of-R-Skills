@@ -1,0 +1,80 @@
+---
+title: "Challenge 7"
+execute:
+  echo: true
+  error: true 
+author: "Fiona Norton"
+format: 
+  html: 
+    code-fold: true
+    code-summary: "Show code"
+    theme: "yeti"
+editor: visual
+---
+
+# Setup
+```{r}
+#| message: false
+library(tidyverse)
+library(tidyr)
+blackfootfish <- read.csv(here::here("datasets", "BlackfootFish.csv"))
+```
+
+
+# Part 1 - Replacing Impossible Measurements with NAs
+
+```{r}
+reasonable_values <- function(vec, min, max) {
+  case_when(vec > max ~ NA_real_, 
+            vec < min ~ NA_real_,
+            TRUE ~ vec)
+}
+```
+
+```{r}
+blackfootfish <- blackfootfish |> 
+  mutate(weight = reasonable_values(weight, min = 30, max = 600),
+         length = reasonable_values(length, min = 100, max = 500))
+```
+
+# Part 2 - Condition Index Function
+
+```{r}
+condition_index <- function(length, weight) {
+  condition_index = (weight / (length^3)) * 100
+  return(condition_index)
+}
+```
+
+```{r}
+#| message: false
+#| output: false
+# Test
+x <- c(1:10)
+y <- c(5,5,5,5,5,5,6,6,6,7)
+condition_index(x, y)
+```
+
+# Part 3 - Condition Index Over Time
+
+```{r}
+blackfootfish <- blackfootfish |> 
+  mutate(condition_index = condition_index(length, weight))
+```
+
+```{r}
+blackfootfish |> 
+  group_by(year) |> 
+  summarise(avg_condition = mean(condition_index, na.rm = TRUE)) |> 
+  ggplot(mapping = aes(x = year, y = avg_condition)) +
+  geom_line() +
+  labs(x = "Year", y = "", 
+       title = "Average Condition Index of Trout Over Time")
+```
+
+# Revision Reflections 
+
+The feedback I received on this challenge provided me with another opportunity to increase the efficiency and reduce repetition in my code. To increase efficiency, I have changed my reasonable_values() function to use case_when() instead of using the ifelse() function multiple times. 
+
+
+
