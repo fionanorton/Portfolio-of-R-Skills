@@ -12,8 +12,8 @@ format:
 editor: visual
 ---
 
-
 ## Setup
+
 ```{r}
 #| message: false
 library(tidyverse)
@@ -64,7 +64,7 @@ The largest difference in the average number of artists participants reported li
 
 # Study Design Critique
 
-I believe there are a few issues with the design of this study that could cause readers to be  skeptical of the analysis and results of the data. First off, the 168 participants were all enrolled in at least one linguistics, sociology, or music class, which means these students are likely more well versed with language and/or music than the average. Also there are significantly more white participants in the study compared to non-white participants (135 compared to 33). 
+I believe there are a few issues with the design of this study that could cause readers to be skeptical of the analysis and results of the data. First off, the 168 participants were all enrolled in at least one linguistics, sociology, or music class, which means these students are likely more well versed with language and/or music than the average. Also there are significantly more white participants in the study compared to non-white participants (135 compared to 33).
 
 ```{r}
 hiphop_clean |> 
@@ -73,11 +73,6 @@ hiphop_clean |>
   count()
 ```
 
-# Revision Reflections 
+# Revision Reflections
 
-Through my revisions I learned about the "diff" function! Until now I was getting separate means and then determining the largest difference in my head but now I am able to use the diff function, which will print all of the differences for me. This is very useful and will help me with questions like this in the future. 
-
-
-
-
-
+Through my revisions I learned about the "diff" function! Until now I was getting separate means and then determining the largest difference in my head but now I am able to use the diff function, which will print all of the differences for me. This is very useful and will help me with questions like this in the future.

@@ -1,0 +1,150 @@
+---
+title: "Lab 7: Functions and Fish"
+execute:
+  echo: true
+  error: true 
+author: "Fiona Norton"
+format: 
+  html: 
+    code-fold: true
+    code-summary: "Show code"
+    theme: "yeti"
+editor: visual
+---
+
+# The Data 
+
+```{r}
+#| message: false
+library(tidyverse)
+library(tidyr)
+library(ggplot2)
+blackfootfish <- read.csv(here::here("datasets", "BlackfootFish.csv"))
+```
+
+# Part One: Summaries and Plots (Midterm Review)
+
+## Task 1 – Summarizing Missing Data
+
+How many observations have missing values? And what variable(s) have missing values present?
+ 
+```{r}
+blackfootfish |> 
+  summarize(across(.cols = everything(), 
+                   .fns = ~sum(is.na(.))))
+```
+
+There are 1796 observations with missing values, all of these missing values are present in the "weight" variable. 
+
+## Task 2 – Visualizing Missing Data
+
+Create a thoughtful visualization exploring the frequency of missing values across the different years, sections, and trips.
+
+```{r}
+blackfootfish |> 
+  group_by(year, trip, section) |> 
+  summarize("NA_count" = sum(is.na(weight))) |> 
+  ggplot(mapping = aes(x = year, y = NA_count, fill = section)) +
+  geom_col() +
+  facet_wrap(~trip) +
+  labs(x = "Year", y = "Number of NAs", 
+       title = "Number of NAs in Each Year for Trip 1 vs. Trip 2 by Section")
+```
+
+
+# Part Two: Adjusting the Data (Function Writing)
+
+## Task 1 - Writing a Function
+
+```{r}
+rescale_01 <- function(vec) {
+  stopifnot(is.numeric(vec))
+  min <- min(vec, na.rm = TRUE)
+  max <- max(vec, na.rm = TRUE)
+  rescale <- (vec - min) / (max - min)
+  return(rescale)
+}
+```
+
+
+## Task 3 - Performing a Simple Test
+
+```{r}
+x <- c(1:25, NA)
+rescale_01(x)
+```
+
+## Task 4 - Performing a More Difficult Test
+
+```{r}
+#| layout-ncol: 2
+# original code
+
+#rescaled_length <- rescale_01(blackfootfish$length)
+
+#ggplot(blackfootfish, mapping = aes(x = weight, y = length)) +
+  #geom_point() +
+  #labs(x = "Weight", y = "Length")
+
+#ggplot(blackfootfish, mapping = aes(x = weight, y = rescaled_length)) +
+  #geom_point() +
+  #labs(x = "Weight", y = "Rescaled Length")
+
+```
+
+```{r}
+#| layout-ncol: 2
+# revised code
+rescaled_length <- rescale_01(blackfootfish$length)
+
+blackfootfish |> 
+  ggplot(mapping = aes(x = length)) +
+    geom_histogram(bins = 300, fill = "hot pink") +
+    labs(x = "Original Length", y = "Count")
+
+blackfootfish |> 
+  ggplot(mapping = aes(x = rescaled_length)) +
+    geom_histogram(bins = 300, fill = "hot pink") +
+    labs(x = "Rescaled Length", y = "Count")
+```
+
+
+## Task 5 – Incorportaing Variables
+
+```{r}
+rescale_column <- function(data, variable) {
+  stopifnot(is.data.frame(data))
+  data |> 
+    mutate( {{ variable }} := std_to_01( {{ variable }} )
+            )
+}
+```
+
+## Task 6 - Another Function Test
+
+```{r}
+rescale_column <- function(data, variables) {
+  stopifnot(is.data.frame(data))
+  data |> 
+    mutate( 
+      across(
+      .cols = {{ variables }}, 
+      .fns = rescale_01
+      )
+    )
+}
+```
+
+```{r}
+#| message: false
+#| output: false
+rescale_column(blackfootfish, variables = c(length, weight))
+```
+
+
+# Revision Reflections
+
+One of the main adjustments that I made to my code after receiving feedback was in my rescale_01() function in order to make it more efficient. Originally I repeated the max() and min() functions but by assigning the max and min to objects, I am able to use them later in the code without actually calling the function. Additionally I realized that sometimes  more complex data visualizations are not necessarily better for getting information. To compare the original and rescaled lengths we can just look at their distributions and see that they are virtually the same. 
+
+
+
