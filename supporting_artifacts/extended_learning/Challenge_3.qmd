@@ -9,6 +9,7 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "united"
+    self-contained: true
 editor: visual
 ---
 
@@ -20,7 +21,7 @@ library(tidyverse)
 library(here)
 library(ggplot2)
 library(ggridges)
-hiphop <- read_csv(here :: here("datasets", "hiphop.csv"))
+hiphop <- read_csv(here :: here("supporting_artifacts", "datasets", "hiphop.csv"))
 #change all character variables to factors 
 hiphop_clean <- hiphop |> 
   mutate(across(where(is.character), as.factor))
