@@ -9,6 +9,7 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "simplex"
+    self-contained: true
 editor: visual
 ---
 
@@ -21,7 +22,7 @@ editor: visual
 library(tidyverse)
 library(tidyselect)
 library(here)
-avocados <- read_csv(here::here("datasets", "avocado.csv"))
+avocados <- read_csv(here::here("supporting_artifacts", "datasets", "avocado.csv"))
 ```
 
 ## 1. Describe the Data
