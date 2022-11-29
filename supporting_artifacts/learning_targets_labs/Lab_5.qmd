@@ -1,5 +1,5 @@
 ---
-title: "Lab5: Factors in Visualization"
+title: "Lab 5: Factors in Visualization"
 execute:
   echo: true
   error: true 
@@ -9,18 +9,20 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "spacelab"
+    self-contained: true
 editor: visual
 ---
 
 # Revisiting Lab 2
 
 ## Setup
+
 ```{r}
 #| message: false
 library(tidyverse)
 library(here)
 library(ggplot2)
-surveys <- read_csv(here :: here("datasets", "surveys.csv"))
+surveys <- read_csv(here :: here("supporting_artifacts", "datasets", "surveys.csv"))
 ```
 
 ## Reorder the boxplots and add a title.
@@ -48,7 +50,6 @@ ggplot(data = surveys,
   labs(x = "", y = "", title = "Weight (gm) of Each Genus of Rodent throughout the Study")
 ```
 
-
 ## Calculate and plot the mean weight for each year (for each genus).
 
 ```{r}
@@ -59,7 +60,6 @@ surveys |>
   geom_line() +
   labs(x = "", y = "", title = "Average Weight (gm) of Each Genus of Rodent throughout the Study")
 ```
-
 
 ## Reorder the lines so the weights go in descending order.
 
@@ -84,8 +84,7 @@ surveys |>
        color = "Genus") 
 ```
 
-
-# Captures over the week 
+# Captures over the week
 
 ## Create a visualization of the number of rodents captured each day of the week.
 
@@ -97,7 +96,6 @@ surveys |>
        title = "Number of Rodents Captured on Each Day of the Week") +
   theme(legend.position = "none") 
 ```
-
 
 ## Change the order of the day of the week to go Monday through Sunday.
 
@@ -111,7 +109,6 @@ surveys |>
        title = "Number of Rodents Captured on Each Day of the Week") +
   theme(legend.position = "none") 
 ```
-
 
 ## Plot the number of rodents captured between the week days and weekends.
 
@@ -129,5 +126,3 @@ surveys |>
   theme(legend.position = "none")
            
 ```
-
-
