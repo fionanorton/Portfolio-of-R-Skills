@@ -9,10 +9,12 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "journal"
+    self-contained: true
 editor: visual
 ---
 
-# Setup 
+# Setup
+
 ```{r}
 #| include: false
 library(dplyr)
@@ -77,8 +79,7 @@ xmas2 <- xmas %>%
   )
 ```
 
-
-# 1 Singing the Song 
+# 1 Singing the Song
 
 ## 1.1 Step Three: Iteration.
 
@@ -132,6 +133,3 @@ map_chr(1:12, ~ sing_day(xmas2, .x, Full.Phrase)) |>
   str_c(collapse = "\n") |>
   cat()
 ```
-
-
-
