@@ -11,10 +11,12 @@ format:
     font-family: "cursive"
     code-fold: true
     code-summary: "Show code"
+    self-contained: true
 editor: visual
 ---
 
-# Setup 
+# Setup
+
 ```{r}
 #| include: false
 library(dplyr)
@@ -79,8 +81,7 @@ xmas2 <- xmas %>%
   )
 ```
 
-
-# Singing the Song 
+# Singing the Song
 
 ```{r}
 # Produces the string for one day of the song.
@@ -125,17 +126,3 @@ map_chr(1:12, ~ sing_day(xmas2, .x, Full.Phrase)) |>
   str_c(collapse = "\n \n") |>
   cat()
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
