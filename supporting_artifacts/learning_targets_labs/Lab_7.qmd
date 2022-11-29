@@ -9,34 +9,35 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "yeti"
+    self-contained: true
 editor: visual
 ---
 
-# The Data 
+# The Data
 
 ```{r}
 #| message: false
 library(tidyverse)
 library(tidyr)
 library(ggplot2)
-blackfootfish <- read.csv(here::here("datasets", "BlackfootFish.csv"))
+blackfootfish <- read.csv(here::here("supporting_artifacts", "datasets", "BlackfootFish.csv"))
 ```
 
 # Part One: Summaries and Plots (Midterm Review)
 
-## Task 1 – Summarizing Missing Data
+## Task 1 -- Summarizing Missing Data
 
 How many observations have missing values? And what variable(s) have missing values present?
- 
+
 ```{r}
 blackfootfish |> 
   summarize(across(.cols = everything(), 
                    .fns = ~sum(is.na(.))))
 ```
 
-There are 1796 observations with missing values, all of these missing values are present in the "weight" variable. 
+There are 1796 observations with missing values, all of these missing values are present in the "weight" variable.
 
-## Task 2 – Visualizing Missing Data
+## Task 2 -- Visualizing Missing Data
 
 Create a thoughtful visualization exploring the frequency of missing values across the different years, sections, and trips.
 
@@ -51,7 +52,6 @@ blackfootfish |>
        title = "Number of NAs in Each Year for Trip 1 vs. Trip 2 by Section")
 ```
 
-
 # Part Two: Adjusting the Data (Function Writing)
 
 ## Task 1 - Writing a Function
@@ -65,7 +65,6 @@ rescale_01 <- function(vec) {
   return(rescale)
 }
 ```
-
 
 ## Task 3 - Performing a Simple Test
 
@@ -108,8 +107,7 @@ blackfootfish |>
     labs(x = "Rescaled Length", y = "Count")
 ```
 
-
-## Task 5 – Incorportaing Variables
+## Task 5 -- Incorportaing Variables
 
 ```{r}
 rescale_column <- function(data, variable) {
@@ -141,10 +139,6 @@ rescale_column <- function(data, variables) {
 rescale_column(blackfootfish, variables = c(length, weight))
 ```
 
-
 # Revision Reflections
 
-One of the main adjustments that I made to my code after receiving feedback was in my rescale_01() function in order to make it more efficient. Originally I repeated the max() and min() functions but by assigning the max and min to objects, I am able to use them later in the code without actually calling the function. Additionally I realized that sometimes  more complex data visualizations are not necessarily better for getting information. To compare the original and rescaled lengths we can just look at their distributions and see that they are virtually the same. 
-
-
-
+One of the main adjustments that I made to my code after receiving feedback was in my rescale_01() function in order to make it more efficient. Originally I repeated the max() and min() functions but by assigning the max and min to objects, I am able to use them later in the code without actually calling the function. Additionally I realized that sometimes more complex data visualizations are not necessarily better for getting information. To compare the original and rescaled lengths we can just look at their distributions and see that they are virtually the same.
