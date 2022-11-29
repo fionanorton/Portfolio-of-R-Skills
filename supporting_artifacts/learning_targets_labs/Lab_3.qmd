@@ -9,17 +9,19 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "materia"
+    self-contained: true
 editor: visual
 ---
 
 ## Setup
+
 ```{r}
 #| message: false
 library(tidyverse)
 library(here)
 library(ggplot2)
 library(ggridges)
-hiphop <- read_csv(here :: here("datasets", "hiphop.csv"))
+hiphop <- read_csv(here :: here("supporting_artifacts", "datasets", "hiphop.csv"))
 # spec(hiphop)
 ```
 
@@ -33,7 +35,7 @@ The "hiphop" dataset provides information on 168 students at the University of M
 
 The rows of the dataset represent each instance of testing an AAE word. Each word was tested 168 times (once for each student), so 168 x 64 words = 10,752 (the total number of rows).
 
-## 3. Missing Values 
+## 3. Missing Values
 
 Missing values for some of the variables were replaced with the mean value of that variable. The benefit to doing this is that we do not have to remove the observations with missing values and can use the information that we do have on them. The drawback to doing this is that it is not actually true and could change some answers.
 
@@ -72,7 +74,7 @@ hiphop_clean |>
   summary()
 ```
 
-The demographics of the subjects in the data show that there are 117 females and 51 males. The youngest person surveyed was 16 years old, and the oldest was 48 years old but the average was around 20 years old. 135 of the subjects were white while only 19 were Asian, 5 were African, 3 were Hispanic, 2 were Indian, 1 was biracial, and 3 were "other". 
+The demographics of the subjects in the data show that there are 117 females and 51 males. The youngest person surveyed was 16 years old, and the oldest was 48 years old but the average was around 20 years old. 135 of the subjects were white while only 19 were Asian, 5 were African, 3 were Hispanic, 2 were Indian, 1 was biracial, and 3 were "other".
 
 ## 8. Plots
 
@@ -93,7 +95,7 @@ hiphop_clean |>
 
 # Familiar Words
 
-### People below the age of 20 
+### People below the age of 20
 
 ```{r}
 hiphop_clean |> 
@@ -132,7 +134,6 @@ hiphop_clean |>
 
 On average, the most familiar word for white males above the age of 30 is "5-0" and there are 25 words that all have a mean familiarity of only 1.
 
-
 # Study Subjects
 
 Finding Justin Bieber:
@@ -152,7 +153,6 @@ hiphop_clean |>
 
 I believe subject "p17" is secretly Justin Bieber because they are the only white male between the ages of 17 and 23 from a town with a population between 10,000 and 60,000 who could name at least 4 Justin Bieber songs.
 
-
 # Revision Reflections
 
-Through the feedback I received from professor Theobold I was able to improve my analysis of the data. I understand the importance of describing the data with both summary statistics and words so that the readers understand the context of the analysis. I also realized that when plotting data where each subject is not in an individual row, it may be helpful to make a transformation before plotting the data, and that it is important to plot what is requested (i.e., demographics). 
+Through the feedback I received from professor Theobold I was able to improve my analysis of the data. I understand the importance of describing the data with both summary statistics and words so that the readers understand the context of the analysis. I also realized that when plotting data where each subject is not in an individual row, it may be helpful to make a transformation before plotting the data, and that it is important to plot what is requested (i.e., demographics).
