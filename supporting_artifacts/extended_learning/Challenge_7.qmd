@@ -9,17 +9,18 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "yeti"
+    self-contained: true
 editor: visual
 ---
 
 # Setup
+
 ```{r}
 #| message: false
 library(tidyverse)
 library(tidyr)
-blackfootfish <- read.csv(here::here("datasets", "BlackfootFish.csv"))
+blackfootfish <- read.csv(here::here("supporting_artifacts", "datasets", "BlackfootFish.csv"))
 ```
-
 
 # Part 1 - Replacing Impossible Measurements with NAs
 
@@ -72,9 +73,6 @@ blackfootfish |>
        title = "Average Condition Index of Trout Over Time")
 ```
 
-# Revision Reflections 
+# Revision Reflections
 
-The feedback I received on this challenge provided me with another opportunity to increase the efficiency and reduce repetition in my code. To increase efficiency, I have changed my reasonable_values() function to use case_when() instead of using the ifelse() function multiple times. 
-
-
-
+The feedback I received on this challenge provided me with another opportunity to increase the efficiency and reduce repetition in my code. To increase efficiency, I have changed my reasonable_values() function to use case_when() instead of using the ifelse() function multiple times.
