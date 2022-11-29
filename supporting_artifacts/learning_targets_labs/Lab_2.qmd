@@ -9,6 +9,7 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "cerulean"
+    self-contained: true
 editor: visual
 ---
 
