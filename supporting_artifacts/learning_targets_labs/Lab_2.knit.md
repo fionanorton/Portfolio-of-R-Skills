@@ -12,6 +12,7 @@ format:
 editor: visual
 ---
 
+
 # Lab Instructions
 
 The questions in this lab are noted with numbers and boldface. Each question will require you produce code, whether it is one line or multiple lines.
@@ -28,13 +29,17 @@ You are permitted and encouraged to work with your teammates as you complete the
 
 In the code chunk below load in the packages necessary for your analysis. You should only need the tidyverse and here packages for this analysis, unless you decide to use additional resources.
 
-```{r setup}
-#| message: false
+
+::: {.cell}
+
+```{.r .cell-code}
 library(tidyverse)
 library(here)
 library(ggplot2)
 library(ggridges)
 ```
+:::
+
 
 # Data Context
 
@@ -66,18 +71,26 @@ For this lab we will use the **`readr`** package (from the `tidyverse`) to read 
 
 **1. Using the `read_csv()` function and the here** package, to write the code necessary to load in the `surveys.csv` dataset. For simplicity, name the dataset `surveys`.
 
-```{r data}
-#| message: false
+
+::: {.cell}
+
+```{.r .cell-code}
 surveys <- read_csv(here :: here("supporting_artifacts", "datasets", "surveys.csv"))
 ```
+:::
+
 
 ## Inspecting the Data
 
-```{r}
-#| output: false
+
+::: {.cell}
+
+```{.r .cell-code}
 dim(surveys)
 str(surveys)
 ```
+:::
+
 
 **2. What are the dimensions of these data?**
 
@@ -101,33 +114,59 @@ Let's get started!
 
 **4. First, let's create a scatterplot of the relationship between `weight` (on the x-axis) and `hindfoot_length` (on the y-axis).**
 
-```{r scatterplot}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, mapping = aes(y = hindfoot_length, x = weight)) +  
   geom_point()
 ```
+
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/scatterplot-1.png){width=672}
+:::
+:::
+
 
 We can see there are **a lot** of points plotted on top of each other. Let's try and modify this plot to extract more information from it.
 
 **5. Let's add transparency (`alpha`) to the points, to make the points more transparent and (possibly) easier to see.**
 
-```{r alpha}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, 
        mapping = aes(y = hindfoot_length, x = weight),
        ) + 
   geom_point(alpha = 0.3)
 ```
 
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/alpha-1.png){width=672}
+:::
+:::
+
+
 Well, that is better, but there are still large clumps of data being plotted on top of each other. Let's try another tool!
 
 **6. Add some jitter to the points in the scatterplot, using `geom_jitter()`.**
 
-```{r jitter}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, 
        mapping = aes(y = hindfoot_length, x = weight) 
        ) +
   geom_jitter(alpha = 0.3)
-
 ```
+
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/jitter-1.png){width=672}
+:::
+:::
+
 
 ## Faceting
 
@@ -135,7 +174,10 @@ Despite our best efforts there is still a substantial amount of overplotting occ
 
 **7. Facet your jittered scatterplot by `species`.**
 
-```{r facet}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, 
        mapping = aes(y = hindfoot_length, x = weight) 
        ) + 
@@ -144,29 +186,62 @@ ggplot(data = surveys,
   facet_wrap(~ species)
 ```
 
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/facet-1.png){width=672}
+:::
+:::
+
+
 # Boxplots & Density Ridges
 
 **8. Create side-by-side boxplots to visualize the distribution of weight within each species.**
 
-```{r boxplot-jitter-points}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, 
        mapping = aes(y = species, x = weight) 
        ) + 
   geom_boxplot() 
 ```
 
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/boxplot-jitter-points-1.png){width=672}
+:::
+:::
+
+
 A fundamental complaint of boxplots is that they do not plot the raw data. However, with **ggplot** we can add the raw points on top of the boxplots!
 
 **9. Add another layer to your previous plot (above) that plots each observation.**
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, 
        mapping = aes(y = species, x = weight, fill = species) 
        ) + 
   geom_density_ridges(scale = 0.9) +
   geom_point(alpha = 0.3) 
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Picking joint bandwidth of 2.21
+```
+:::
+
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/unnamed-chunk-2-1.png){width=672}
+:::
+
+```{.r .cell-code}
   #geom_boxplot()
 ```
+:::
+
 
 Alright, this should look less than optimal. Your points should appear rather stacked on top of each other. To make them less stacked, we need to jitter them a bit, using `geom_jitter()`.
 
@@ -174,7 +249,10 @@ Alright, this should look less than optimal. Your points should appear rather st
 
 That should look much better! But there is another problem! You should notice that in the code above there are **both** red points and black points. So, some of the observations are being plotted twice!
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, 
        mapping = aes(y = species, x = weight) 
        ) + 
@@ -182,6 +260,18 @@ ggplot(data = surveys,
   geom_jitter(color = "red", alpha = 0.3) + 
   geom_density_ridges(scale = 0.9)
 ```
+
+::: {.cell-output .cell-output-stderr}
+```
+Picking joint bandwidth of 2.21
+```
+:::
+
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/unnamed-chunk-3-1.png){width=672}
+:::
+:::
+
 
 **11. Inspect the help file for `geom_boxplot()` and see how you can remove the outliers from being plotted by `geom_boxplot()`. Make this change in the code above!**
 
@@ -191,7 +281,10 @@ Some small changes that make **big** differences to plots. One of these changes 
 
 **12. Using the code you created in question 8, modify the x-axis and y-axis labels to describe what is being plotted. Be sure to include any necessary units!**
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 cdPalette_box <- c("#e02a70", "#cbe02a", "#2ae09a", "#3f2ae0", "#f97438", 
                     "#d438f9", "#38bdf9", "#5cf938")
 
@@ -216,14 +309,22 @@ ggplot(data = surveys,
   annotate("text", y = 13, x = 230, label = "Dipodomys") + 
   annotate("text", y = 14, x = 100, label = "Onychomys") + 
   theme(legend.position = "none")
-  
 ```
+
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/unnamed-chunk-4-1.png){width=672}
+:::
+:::
+
 
 Some people (and journals) prefer for boxplots to be stacked with a specific orientation! Let's practice changing the orientation of our boxplots.
 
 **13. Flip the orientation of your boxplots from question 10. If you created side-by-side boxplots (stacked horizontally), your boxplots should be stacked vertically. If you had vertically stacked boxplots, you should stack your boxplots horizontally!**
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 ggplot(data = surveys, 
        mapping = aes(x = species, y = weight, color = species) 
        ) + 
@@ -231,6 +332,13 @@ ggplot(data = surveys,
   labs(y = "Weight (grams)", x = "Species of Rodent") 
 ```
 
+::: {.cell-output-display}
+![](Lab_2_files/figure-html/unnamed-chunk-5-1.png){width=672}
+:::
+:::
+
+
 ## Revision Reflections
 
 One of my takeaways from the feedback I received on this lab was the importance of suppressing unnecessary messages/outputs. When I first turned this in, I did not know that the output that prints in the console when I run my code will be printed in the quarto document automatically unless I specify otherwise. Now I know to use the "messages: false" or "echo: false" functions in the code chunks to prevent this. I also did not understand that using geom_point and geom_jitter at the same time is redundant because they are plotting the same data. I changed my plot in question 6 to only include geom_jitter so that we could see the points more clearly. Finally, I learned that the coord_flip function is not necessary to use if we want to change the orientation of box plots because we can just switch the x and y in the code and get the same result. I think I previously used coord_flip because I had learned about it in the reading and assumed that it was the best option since I would just have to copy the previous code and add coord_flip to the end.
+
