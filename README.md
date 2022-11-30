@@ -10,9 +10,27 @@ This is an edit I am making to my README file to see if I can push the changes f
 
 ## Essay Responses
 
+#### Growth as a Data Scientist
+
+#### The Power of Efficiency
+
+#### Lightening Rpund
+
 ## Supporting Artifacts 
 
 ### Demonstration of Learning Targets
+
+#### Lab 2
+
+#### Lab 3
+
+#### Lab 4
+
+#### Lab 5
+
+#### Lab 7 
+
+#### Lab 8 
 
 ### Demonstration of Continued Learning
 
