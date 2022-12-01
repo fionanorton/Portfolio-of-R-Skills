@@ -1,0 +1,154 @@
+---
+title: "Lab 9: Baby Names"
+execute:
+  echo: true
+  error: true 
+author: "Fiona Norton"
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    theme: "cerulean"
+    self-contained: true
+editor: visual
+---
+
+```{r}
+#| message: false
+library(dplyr)
+library(tidyverse)
+```
+
+# The Data
+
+```{r}
+#| message: false
+StateNames_A <- read.csv(here::here("supporting_artifacts", "datasets", "StateNames_A.csv"))
+```
+
+# Summarizing & Visualizing the Number of Allisons
+
+```{r}
+#| message: false
+StateNames_A <- StateNames_A |> 
+  mutate("Sex at birth" = Gender) |> 
+  select(Name, Year, State, Count, `Sex at birth`)
+```
+
+### 1. Make a summary table of the number of babies named "Allison" for each state and the sex of the baby. Specifically, each state should be its own row and each sex should have its own column. Additionally, if there were no babies born with the name "Allison" for that combination of year, state, & sex the table should have a value of 0 (not an NA).
+
+```{r}
+Allisons_Table <- StateNames_A |> 
+  pivot_wider(names_from = `Sex at birth`, values_from = Count) |> 
+  filter(Name == "Allison") |> 
+  group_by(State) |> 
+  summarise(across(.cols = c('F', 'M'), .fns = sum)) |> 
+  mutate(across(.cols = c('F', 'M'), ~replace_na(.,0)))
+
+Allisons_Table
+```
+
+### 2. You should have seen in the table above that "Allison" is a name given overwhelmingly to babies assigned female at birth. So, filter the data to include only babies assigned Female at birth.
+
+```{r}
+StateNames_A|> 
+  filter(`Sex at birth` == 'F',
+         Name == "Allison") |> 
+  group_by(State) |> 
+  summarise("FemaleAllisons" = sum(Count))
+```
+
+### 3. Make a visualization showing how the popularity of the name "Allison" has changed over the years.
+
+```{r}
+StateNames_A|> 
+  filter(`Sex at birth` == 'F',
+         Name == "Allison") |> 
+  ggplot(mapping = aes(x = Year, y = Count, fill = Year)) +
+  geom_col() +
+  labs(title = "Numbers of Female Babies Named Allison", x = "Year", y = "") +
+  theme(legend.position = "none")
+```
+
+# Modeling the Number of Allisons
+
+### 4. Create a linear model with the year as the explanatory variable, and the number of Allisons as the response.
+
+```{r}
+AllisonMod <- StateNames_A |> 
+  filter(Name == "Allison") |> 
+  lm(Count ~ Year, data = _) 
+
+summary(AllisonMod)
+```
+
+### 5. Visualize the regression model.
+
+```{r}
+AllisonMod |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(x = Year, y = .fitted)) +
+  geom_point() +
+  labs(title = "Fitted Model", x = "Year", y = "Fitted Value")
+```
+
+### 6. Write out the estimated regression equation.
+
+$$ ŷ = 3881.88 - 1.876Year $$
+
+### 7. Plot the residuals of the model, that is, the actual values minus the predicted values. Comment on the residuals - do you see any patterns?
+
+```{r}
+AllisonMod |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(y = .resid, x = .fitted)) +
+  geom_point() +
+  labs(title = "Residuals vs. Fitted", x = "", y = "")
+```
+
+The band of the residuals seems to get wider as the fitted values increase, excluding a few outliers.
+
+### 8. What do you conclude from this model?
+
+Based on the widening band of residuals and the simplicity of the model, we could probably find a better fit by including more variables.
+
+# Spelling by State
+
+### 1. Narrow the A name dataset (downloaded previously) down to only male-assigned babies named "Allan", "Alan", or "Allen". Make a plot comparing the popularity of these names over time.
+
+```{r}
+allan_data <- StateNames_A |> 
+  filter(Name == c("Allan", "Allen", "Alan"),
+         `Sex at birth` == 'M')
+
+allan_data |> 
+  ggplot(mapping = aes(x = Year, y = Count, fill = "pink")) +
+  geom_col() +
+  facet_wrap(~Name) +
+  theme(legend.position = "none") +
+  labs(title = "Popularity of 'Allan' Spellings in the U.S.")
+```
+
+### 2. Compute the total number of babies born with each spelling of "Allan" in 2000, in Pennsylvania and in California. Specifically, each spelling should be its own column and each state should have its own row. Similar to before, a 0 (not an NA) should be used to represent locations where there were no instances of these names.
+
+```{r}
+#| warning: false
+allan_data |> 
+  pivot_wider(names_from = Name, values_from = Count) |> 
+  filter(State == "PA" | State == "CA", 
+         Year == 2000) |> 
+  mutate(across(.cols = Allen:Allan, ~replace_na(.,0)))
+```
+
+### 3. Convert your total counts to overall percents. That is, what was the percent breakdown between the three spellings in CA? What about in PA?
+
+```{r}
+allan_data |> 
+  pivot_wider(names_from = Name, values_from = Count) |> 
+  mutate(across(.cols = Allen:Allan, ~replace_na(.,0))) |> 
+  filter(State == "PA" | State == "CA", 
+         Year == 2000) |> 
+  mutate(Allen = round(Allen / sum(across(Allen:Allan)), 2),
+         Alan = round(Alan / sum(across(Allen:Allan)), 2),
+         Allan = round(Allan / sum(across(Allen:Allan)), 2))
+```
