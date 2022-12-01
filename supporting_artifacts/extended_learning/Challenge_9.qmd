@@ -1,0 +1,208 @@
+---
+title: "Challenge 9: Creating Nice Tables"
+execute:
+  echo: true
+  error: true 
+author: "Fiona Norton"
+format: 
+  html: 
+    code-fold: true
+    code-summary: "Show code"
+    theme: "cerulean"
+editor: visual
+---
+
+```{r}
+#| message: false
+library(dplyr)
+library(tidyverse)
+library(knitr)
+library(DT)
+library(kableExtra)
+```
+
+# The Data
+
+```{r}
+#| message: false
+StateNames_A <- read.csv(here::here("supporting_artifacts", "datasets", "StateNames_A.csv"))
+```
+
+```{r}
+kable(head(StateNames_A, 50), 
+      format = "html", 
+      align = c('crcrc'),
+      booktabs = TRUE,
+      caption = "Preview of First 50 Lines of Dataset") |> 
+  kable_minimal("hover", font_size = 12) |> 
+  scroll_box(width = "600px", height = "400px")
+```
+
+
+# Summarizing & Visualizing the Number of Allisons
+
+```{r}
+#| message: false
+StateNames_A <- StateNames_A |> 
+  mutate("Sex at birth" = Gender) |> 
+  select(Name, Year, State, Count, `Sex at birth`)
+```
+
+### 1.  Make a summary table of the number of babies named "Allison" for each state and the sex of the baby. 
+
+```{r}
+Allisons_Table <- StateNames_A |> 
+  pivot_wider(names_from = `Sex at birth`, values_from = Count) |> 
+  filter(Name == "Allison") |> 
+  group_by(State) |> 
+  summarise(across(.cols = c('F', 'M'), .fns = sum)) |> 
+  mutate(across(.cols = c('F', 'M'), ~replace_na(.,0)))
+
+kable(Allisons_Table, 
+      format = "html", 
+      col.names = c("State", "Frequency of Females", "Frequency of Males"),
+      align = c('cll'),
+      booktabs = TRUE,
+      caption = "Number of Allisons in Each State by Sex") |> 
+  kable_minimal("hover", font_size = 12) |> 
+  scroll_box(width = "500px", height = "400px")
+```
+
+### 2.  Filter the data to include only babies assigned Female at birth.
+
+```{r}
+FemaleAllisons_Table <- StateNames_A|> 
+  filter(`Sex at birth` == 'F',
+         Name == "Allison") |> 
+  group_by(State) |> 
+  summarise("FemaleAllisons" = sum(Count))
+
+kable(FemaleAllisons_Table, 
+      format = "html", 
+      col.names = c("State", "Frequency of Females"),
+      align = c('cc'),
+      booktabs = TRUE,
+      caption = "Number of Female Allisons in Each State") |> 
+  kable_minimal("hover", font_size = 12) |> 
+  scroll_box(width = "300px", height = "400px")
+```
+
+### 3.  Make a visualization showing how the popularity of the name "Allison" has changed over the years.
+
+```{r}
+StateNames_A|> 
+  filter(`Sex at birth` == 'F',
+         Name == "Allison") |> 
+  ggplot(mapping = aes(x = Year, y = Count, fill = Year)) +
+  geom_col() +
+  labs(title = "Numbers of Female Babies Named Allison", x = "Year", y = "") +
+  theme(legend.position = "none")
+```
+
+# Modeling the Number of Allisons 
+
+### 4. Create a linear model with the year as the explanatory variable, and the number of Allisons as the response.
+
+```{r}
+AllisonMod <- StateNames_A |> 
+  filter(Name == "Allison") |> 
+  lm(Count ~ Year, data = _) 
+
+summary(AllisonMod)
+
+```
+
+### 5. Visualize the regression model.
+
+```{r}
+AllisonMod |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(x = Year, y = .fitted)) +
+  geom_point() +
+  labs(title = "Fitted Model", x = "Year", y = "Fitted Value")
+```
+
+### 6. Write out the estimated regression equation.
+
+  $$ ŷ = 3881.88 - 1.876Year $$
+
+
+### 7. Plot the residuals of the model, that is, the actual values minus the predicted values. Comment on the residuals - do you see any patterns?
+
+```{r}
+AllisonMod |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(y = .resid, x = .fitted)) +
+  geom_point() +
+  labs(title = "Residuals vs. Fitted", x = "", y = "")
+```
+
+The band of the residuals seems to get wider as the fitted values increase, excluding a few outliers. 
+
+### 8. What do you conclude from this model?
+
+Based on the widening band of residuals and the simplicity of the model, we could probably find a better fit by including more variables.
+
+# Spelling by State
+
+### 1. Narrow the A name dataset (downloaded previously) down to only male-assigned babies named “Allan”, “Alan”, or “Allen”. Make a plot comparing the popularity of these names over time.
+
+```{r}
+allan_data <- StateNames_A |> 
+  filter(Name == c("Allan", "Allen", "Alan"),
+         `Sex at birth` == 'M') 
+
+allan_data |> 
+  ggplot(mapping = aes(x = Year, y = Count, fill = "pink")) +
+  geom_col() +
+  facet_wrap(~Name) +
+  theme(legend.position = "none") +
+  labs(title = "Popularity of 'Allan' Spellings")
+```
+
+### 2. Compute the total number of babies born with each spelling of “Allan” in 2000, in Pennsylvania and in California. 
+
+```{r}
+#| warning: false
+Allan_Table <- allan_data |> 
+  pivot_wider(names_from = Name, values_from = Count) |> 
+  filter(State == "PA" | State == "CA",
+         Year == 2000) |> 
+  mutate(across(.cols = Allen:Allan, ~replace_na(.,0)))
+
+kable(Allan_Table, 
+      format = "html", 
+      col.names = c("Year", "State", "Sex at Birth", "Frequency of 'Allen'", 
+                    "Frequency of 'Alan'", "Frequency of 'Allan'"),
+      align = c('lllrrr'),
+      booktabs = TRUE,
+      caption = "Allan Babies in CA and PA by Spelling") |> 
+  kable_classic(font_size = 12)
+```
+
+### 3. Convert your total counts to overall percents. That is, what was the percent breakdown between the three spellings in CA? What about in PA?
+
+```{r}
+#| warning: false
+Allan_Table_2 <- allan_data |> 
+  pivot_wider(names_from = Name, values_from = Count) |> 
+  mutate(across(.cols = Allen:Allan, ~replace_na(.,0))) |> 
+  filter(State == "PA" | State == "CA", 
+         Year == 2000) |> 
+  mutate(Allen = round(Allen / sum(across(Allen:Allan)), 2),
+         Alan = round(Alan / sum(across(Allen:Allan)), 2),
+         Allan = round(Allan / sum(across(Allen:Allan)), 2))
+
+kable(Allan_Table_2, 
+      format = "html", 
+      col.names = c("Year", "State", "Sex at Birth", "Percent 'Allen'", 
+                    "Percent 'Alan'", "Percent 'Allan'"),
+      align = c('lllrrr'),
+      booktabs = TRUE,
+      caption = "Percent of Total Allan Babies by Spelling in CA and PA") |> 
+  kable_classic(font_size = 12)
+```
+
+
+
+
