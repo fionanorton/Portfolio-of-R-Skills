@@ -51,8 +51,6 @@
 
 ##### Revisions Lab 7
 
-##### Revisions Challenge 7
-
 #### Extending My Thinking
 
 ##### Challenge 3
