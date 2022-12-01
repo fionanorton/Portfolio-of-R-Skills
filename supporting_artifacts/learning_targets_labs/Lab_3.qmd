@@ -95,7 +95,7 @@ hiphop_clean |>
 
 # Familiar Words
 
-### People below the age of 20
+## 9. People below the age of 20
 
 ```{r}
 hiphop_clean |> 
@@ -108,7 +108,7 @@ hiphop_clean |>
 
 On average, the most familiar word for people below the age of 20 is "off the hook" and the least familiar word is "catch the vapors".
 
-### Non-white women
+## 10. Non-white women
 
 ```{r}
 hiphop_clean |> 
@@ -121,7 +121,7 @@ hiphop_clean |>
 
 On average, the most familiar word for non-white females is "feel me" and there are 4 words that are all equally unfamiliar; they are break someone out", "dukey rope", "plex", and "rollie".
 
-### White men above the age of 30
+## 11. White men above the age of 30
 
 ```{r}
 hiphop_clean |> 
@@ -136,7 +136,7 @@ On average, the most familiar word for white males above the age of 30 is "5-0" 
 
 # Study Subjects
 
-Finding Justin Bieber:
+## 12. Finding Justin Bieber:
 
 ```{r}
 hiphop_clean |> 
