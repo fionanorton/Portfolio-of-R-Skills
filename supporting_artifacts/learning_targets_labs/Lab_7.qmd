@@ -25,7 +25,7 @@ blackfootfish <- read.csv(here::here("supporting_artifacts", "datasets", "Blackf
 
 # Part One: Summaries and Plots (Midterm Review)
 
-## Task 1 -- Summarizing Missing Data
+## 1. Task 1 -- Summarizing Missing Data
 
 How many observations have missing values? And what variable(s) have missing values present?
 
@@ -37,7 +37,7 @@ blackfootfish |>
 
 There are 1796 observations with missing values, all of these missing values are present in the "weight" variable.
 
-## Task 2 -- Visualizing Missing Data
+## 2. Task 2 -- Visualizing Missing Data
 
 Create a thoughtful visualization exploring the frequency of missing values across the different years, sections, and trips.
 
@@ -48,13 +48,13 @@ blackfootfish |>
   ggplot(mapping = aes(x = year, y = NA_count, fill = section)) +
   geom_col() +
   facet_wrap(~trip) +
-  labs(x = "Year", y = "Number of NAs", 
+  labs(x = "Year", y = "", 
        title = "Number of NAs in Each Year for Trip 1 vs. Trip 2 by Section")
 ```
 
 # Part Two: Adjusting the Data (Function Writing)
 
-## Task 1 - Writing a Function
+## 3. Task 1 - Writing a Function
 
 ```{r}
 rescale_01 <- function(vec) {
@@ -66,14 +66,14 @@ rescale_01 <- function(vec) {
 }
 ```
 
-## Task 3 - Performing a Simple Test
+## 4. Task 2 - Performing a Simple Test
 
 ```{r}
 x <- c(1:25, NA)
 rescale_01(x)
 ```
 
-## Task 4 - Performing a More Difficult Test
+## 5. Task 3 - Performing a More Difficult Test
 
 ```{r}
 #| layout-ncol: 2
@@ -107,7 +107,7 @@ blackfootfish |>
     labs(x = "Rescaled Length", y = "Count")
 ```
 
-## Task 5 -- Incorportaing Variables
+## 6. Task 4 -- Incorporating Variables
 
 ```{r}
 rescale_column <- function(data, variable) {
@@ -118,7 +118,7 @@ rescale_column <- function(data, variable) {
 }
 ```
 
-## Task 6 - Another Function Test
+## 7. Task 5 - Another Function Test
 
 ```{r}
 rescale_column <- function(data, variables) {

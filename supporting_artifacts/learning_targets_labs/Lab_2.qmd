@@ -65,7 +65,7 @@ We have seen in the practice activity that when importing a dataframe, the colum
 
 For this lab we will use the **`readr`** package (from the `tidyverse`) to read in the data. We'll read in our data using the `read_csv()` function instead of the `read.csv()` function. This function **does not** coerce character variables to factors, a behavior that many in the R community feel is unappealing.
 
-**1. Using the `read_csv()` function and the here** package, to write the code necessary to load in the `surveys.csv` dataset. For simplicity, name the dataset `surveys`.
+### **1. Using the `read_csv()` function and the here** package, to write the code necessary to load in the `surveys.csv` dataset. For simplicity, name the dataset `surveys`.
 
 ```{r data}
 #| message: false
@@ -80,11 +80,11 @@ dim(surveys)
 str(surveys)
 ```
 
-**2. What are the dimensions of these data?**
+### **2. What are the dimensions of these data?**
 
 The data have 30,463 rows and 15 columns.
 
-**3. What are the data types of the variables in the dataset?**
+### **3. What are the data types of the variables in the dataset?**
 
 There are 7 variables that are numeric ("doubles"), 7 that are strings/characters, and one that is a date.
 
@@ -100,7 +100,7 @@ Let's get started!
 
 ## Scatterplot
 
-**4. First, let's create a scatterplot of the relationship between `weight` (on the x-axis) and `hindfoot_length` (on the y-axis).**
+### **4. First, let's create a scatterplot of the relationship between `weight` (on the x-axis) and `hindfoot_length` (on the y-axis).**
 
 ```{r scatterplot}
 ggplot(data = surveys, mapping = aes(y = hindfoot_length, x = weight)) +  
@@ -109,7 +109,7 @@ ggplot(data = surveys, mapping = aes(y = hindfoot_length, x = weight)) +
 
 We can see there are **a lot** of points plotted on top of each other. Let's try and modify this plot to extract more information from it.
 
-**5. Let's add transparency (`alpha`) to the points, to make the points more transparent and (possibly) easier to see.**
+### **5. Let's add transparency (`alpha`) to the points, to make the points more transparent and (possibly) easier to see.**
 
 ```{r alpha}
 ggplot(data = surveys, 
@@ -120,7 +120,7 @@ ggplot(data = surveys,
 
 Well, that is better, but there are still large clumps of data being plotted on top of each other. Let's try another tool!
 
-**6. Add some jitter to the points in the scatterplot, using `geom_jitter()`.**
+### **6. Add some jitter to the points in the scatterplot, using `geom_jitter()`.**
 
 ```{r jitter}
 ggplot(data = surveys, 
@@ -134,7 +134,7 @@ ggplot(data = surveys,
 
 Despite our best efforts there is still a substantial amount of overplotting occurring in our scatterplot. Let's try splitting the dataset into smaller subsets and see if that allows for us to see the trends a bit better.
 
-**7. Facet your jittered scatterplot by `species`.**
+### **7. Facet your jittered scatterplot by `species`.**
 
 ```{r facet}
 ggplot(data = surveys, 
@@ -147,7 +147,7 @@ ggplot(data = surveys,
 
 # Boxplots & Density Ridges
 
-**8. Create side-by-side boxplots to visualize the distribution of weight within each species.**
+### **8. Create side-by-side boxplots to visualize the distribution of weight within each species.**
 
 ```{r boxplot-jitter-points}
 ggplot(data = surveys, 
@@ -158,7 +158,7 @@ ggplot(data = surveys,
 
 A fundamental complaint of boxplots is that they do not plot the raw data. However, with **ggplot** we can add the raw points on top of the boxplots!
 
-**9. Add another layer to your previous plot (above) that plots each observation.**
+### **9. Add another layer to your previous plot (above) that plots each observation.**
 
 ```{r}
 ggplot(data = surveys, 
@@ -171,7 +171,7 @@ ggplot(data = surveys,
 
 Alright, this should look less than optimal. Your points should appear rather stacked on top of each other. To make them less stacked, we need to jitter them a bit, using `geom_jitter()`.
 
-**10. Remove the previous layer you had and include a `geom_jitter()` layer.**
+### **10. Remove the previous layer you had and include a `geom_jitter()` layer.**
 
 That should look much better! But there is another problem! You should notice that in the code above there are **both** red points and black points. So, some of the observations are being plotted twice!
 
@@ -184,13 +184,13 @@ ggplot(data = surveys,
   geom_density_ridges(scale = 0.9)
 ```
 
-**11. Inspect the help file for `geom_boxplot()` and see how you can remove the outliers from being plotted by `geom_boxplot()`. Make this change in the code above!**
+### **11. Inspect the help file for `geom_boxplot()` and see how you can remove the outliers from being plotted by `geom_boxplot()`. Make this change in the code above!**
 
 # Customization
 
 Some small changes that make **big** differences to plots. One of these changes are better labels for a plot's axes and legend.
 
-**12. Using the code you created in question 8, modify the x-axis and y-axis labels to describe what is being plotted. Be sure to include any necessary units!**
+### **12. Using the code you created in question 8, modify the x-axis and y-axis labels to describe what is being plotted. Be sure to include any necessary units!**
 
 ```{r}
 cdPalette_box <- c("#e02a70", "#cbe02a", "#2ae09a", "#3f2ae0", "#f97438", 
@@ -222,7 +222,7 @@ ggplot(data = surveys,
 
 Some people (and journals) prefer for boxplots to be stacked with a specific orientation! Let's practice changing the orientation of our boxplots.
 
-**13. Flip the orientation of your boxplots from question 10. If you created side-by-side boxplots (stacked horizontally), your boxplots should be stacked vertically. If you had vertically stacked boxplots, you should stack your boxplots horizontally!**
+### **13. Flip the orientation of your boxplots from question 10. If you created side-by-side boxplots (stacked horizontally), your boxplots should be stacked vertically. If you had vertically stacked boxplots, you should stack your boxplots horizontally!**
 
 ```{r}
 ggplot(data = surveys, 
