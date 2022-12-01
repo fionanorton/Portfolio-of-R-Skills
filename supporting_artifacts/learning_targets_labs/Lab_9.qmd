@@ -114,7 +114,7 @@ Based on the widening band of residuals and the simplicity of the model, we coul
 
 # Spelling by State
 
-### 1. Narrow the A name dataset (downloaded previously) down to only male-assigned babies named "Allan", "Alan", or "Allen". Make a plot comparing the popularity of these names over time.
+### 9. Narrow the A name dataset (downloaded previously) down to only male-assigned babies named "Allan", "Alan", or "Allen". Make a plot comparing the popularity of these names over time.
 
 ```{r}
 allan_data <- StateNames_A |> 
@@ -129,7 +129,7 @@ allan_data |>
   labs(title = "Popularity of 'Allan' Spellings in the U.S.")
 ```
 
-### 2. Compute the total number of babies born with each spelling of "Allan" in 2000, in Pennsylvania and in California. Specifically, each spelling should be its own column and each state should have its own row. Similar to before, a 0 (not an NA) should be used to represent locations where there were no instances of these names.
+### 10. Compute the total number of babies born with each spelling of "Allan" in 2000, in Pennsylvania and in California. Specifically, each spelling should be its own column and each state should have its own row. Similar to before, a 0 (not an NA) should be used to represent locations where there were no instances of these names.
 
 ```{r}
 #| warning: false
@@ -140,7 +140,7 @@ allan_data |>
   mutate(across(.cols = Allen:Allan, ~replace_na(.,0)))
 ```
 
-### 3. Convert your total counts to overall percents. That is, what was the percent breakdown between the three spellings in CA? What about in PA?
+### 11. Convert your total counts to overall percents. That is, what was the percent breakdown between the three spellings in CA? What about in PA?
 
 ```{r}
 allan_data |> 
