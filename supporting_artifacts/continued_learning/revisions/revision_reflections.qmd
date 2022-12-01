@@ -1,0 +1,28 @@
+---
+title: "Revisions"
+format: pdf
+editor: visual
+---
+
+# Lab 2 
+
+## Feedback from Dr. Theobold 
+
+"Careful! A professional looking report should not display messages about reading in the data or loading in package. These messages are not useful for the reader and make your document look cluttered."
+
+"Technically, both geom_point() and geom_jitter() are plotting points, so you are actually double plotting the points. You only need one of these geoms in your plot!"
+
+"You do not need to use the coord_flip() function to flip the coordinates of your plot. There is a much simpler way. Can you find it?"
+
+## My Revision Reflections 
+
+One of my takeaways from the feedback I received on this lab was the importance of suppressing unnecessary messages/outputs. When I first turned this in, I did not know that the output that prints in the console when I run my code will be printed in the quarto document automatically unless I specify otherwise. Now I know to use the "messages: false" or "echo: false" functions in the code chunks to prevent this. I also did not understand that using geom_point and geom_jitter at the same time is redundant because they are plotting the same data. I changed my plot in question 6 to only include geom_jitter so that we could see the points more clearly. Finally, I learned that the coord_flip function is not necessary to use if we want to change the orientation of box plots because we can just switch the x and y in the code and get the same result. I think I previously used coord_flip because I had learned about it in the reading and assumed that it was the best option since I would just have to copy the previous code and add coord_flip to the end.
+
+# Lab 3
+
+# Lab 4
+
+
+
+
+
