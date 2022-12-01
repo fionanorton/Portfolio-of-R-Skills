@@ -9,6 +9,7 @@ format:
     code-fold: true
     code-summary: "Show code"
     theme: "materia"
+    self-contained: true
 editor: visual
 ---
 
@@ -19,8 +20,8 @@ editor: visual
 library(readxl) 
 library(tidyverse)
 
-military <- read_xlsx(here::here("datasets", 
-                                 "gov_spending_per_capita.xlsx"), 
+military <- read_xlsx(here::here("supporting_artifacts", "datasets", 
+                                 "gov_spending_per_capita.xlsx" ), 
                       sheet = "Share of Govt. spending", 
                       skip = 6, 
                       n_max = 191)
@@ -70,5 +71,3 @@ military_long |>
   filter(Year == 1990) |> 
   slice_max(Spending)
 ```
-
-
