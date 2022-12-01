@@ -1,7 +1,9 @@
 ---
 title: "Practice Activity 3: Data Wrangling with dplyr 🏫"
 author: "Fiona Norton"
-format: html
+format: 
+  html:
+    self-contained: true
 editor: visual
 ---
 
