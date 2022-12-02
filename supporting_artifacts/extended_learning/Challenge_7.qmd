@@ -22,7 +22,7 @@ library(tidyr)
 blackfootfish <- read.csv(here::here("supporting_artifacts", "datasets", "BlackfootFish.csv"))
 ```
 
-# Part 1 - Replacing Impossible Measurements with NAs
+# 1. Part 1 - Replacing Impossible Measurements with NAs
 
 ```{r}
 reasonable_values <- function(vec, min, max) {
@@ -38,7 +38,7 @@ blackfootfish <- blackfootfish |>
          length = reasonable_values(length, min = 100, max = 500))
 ```
 
-# Part 2 - Condition Index Function
+# 2. Part 2 - Condition Index Function
 
 ```{r}
 condition_index <- function(length, weight) {
@@ -56,7 +56,7 @@ y <- c(5,5,5,5,5,5,6,6,6,7)
 condition_index(x, y)
 ```
 
-# Part 3 - Condition Index Over Time
+# 3. Part 3 - Condition Index Over Time
 
 ```{r}
 blackfootfish <- blackfootfish |> 
