@@ -2626,6 +2626,8 @@ vertical-align: -.125em;
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>xmas <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://www.dropbox.com/s/e584pryn8evm1gz/xmas.csv?dl=1&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<section id="pluralize_gift-function" class="level2">
+<h2 class="anchored" data-anchor-id="pluralize_gift-function">1. pluralize_gift function</h2>
 <div class="cell">
 <details>
 <summary>Show code</summary>
@@ -2640,6 +2642,9 @@ vertical-align: -.125em;
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="make_phrase-function" class="level2">
+<h2 class="anchored" data-anchor-id="make_phrase-function">2. make_phrase function</h2>
 <div class="cell">
 <details>
 <summary>Show code</summary>
@@ -2666,10 +2671,13 @@ vertical-align: -.125em;
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="creating-the-new-data" class="level2">
+<h2 class="anchored" data-anchor-id="creating-the-new-data">3. Creating the new data</h2>
 <div class="cell">
 <details>
 <summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xmas2 <span class="ot">&lt;-</span> xmas <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xmas2 <span class="ot">&lt;-</span> xmas <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">day.num =</span> <span class="fu">as.character</span>(english<span class="sc">::</span><span class="fu">english</span>(Day)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                ), </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Full.Phrase =</span> <span class="fu">pmap_chr</span>(</span>
@@ -2684,10 +2692,11 @@ vertical-align: -.125em;
 </details>
 </div>
 </section>
+</section>
 <section id="singing-the-song" class="level1">
-<h1>1 Singing the Song</h1>
-<section id="step-three-iteration." class="level2">
-<h2 class="anchored" data-anchor-id="step-three-iteration.">1.1 Step Three: Iteration.</h2>
+<h1>Singing the Song</h1>
+<section id="iteration." class="level2">
+<h2 class="anchored" data-anchor-id="iteration.">4. Iteration.</h2>
 <div class="cell">
 <details>
 <summary>Show code</summary>
@@ -2727,7 +2736,7 @@ vertical-align: -.125em;
 </details>
 </div>
 <section id="a-small-test" class="level3">
-<h3 class="anchored" data-anchor-id="a-small-test">A Small Test</h3>
+<h3 class="anchored" data-anchor-id="a-small-test">5. A Small Test</h3>
 <div class="cell">
 <details>
 <summary>Show code</summary>
@@ -2743,7 +2752,7 @@ a partridge in a pear tree</code></pre>
 </div>
 </section>
 <section id="a-larger-test---the-12-days-of-christmas" class="level3">
-<h3 class="anchored" data-anchor-id="a-larger-test---the-12-days-of-christmas">A Larger Test - The 12 Days of Christmas</h3>
+<h3 class="anchored" data-anchor-id="a-larger-test---the-12-days-of-christmas">6. A Larger Test - The 12 Days of Christmas</h3>
 <div class="cell">
 <details>
 <summary>Show code</summary>

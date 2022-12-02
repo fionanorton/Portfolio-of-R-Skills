@@ -28,6 +28,8 @@ library(english)
 xmas <- read.csv("https://www.dropbox.com/s/e584pryn8evm1gz/xmas.csv?dl=1")
 ```
 
+## 1. pluralize_gift function
+
 ```{r pluralize-function}
 pluralize_gift <- function(gift){
 
@@ -39,6 +41,8 @@ return(gift)
 
 }
 ```
+
+## 2. make_phrase function
 
 ```{r phrase-function}
 make_phrase <- function(num_word, item, verb, adjective, location) {
@@ -64,8 +68,10 @@ make_phrase <- function(num_word, item, verb, adjective, location) {
 }
 ```
 
+## 3. Creating the new data 
+
 ```{r xmas2}
-xmas2 <- xmas %>%
+xmas2 <- xmas |> 
   mutate(day.num = as.character(english::english(Day)
                                 ), 
     Full.Phrase = pmap_chr(
@@ -79,9 +85,9 @@ xmas2 <- xmas %>%
   )
 ```
 
-# 1 Singing the Song
+# Singing the Song
 
-## 1.1 Step Three: Iteration.
+## 4. Iteration.
 
 ```{r}
 # Produces the string for one day of the song.
@@ -119,14 +125,14 @@ sing_day <- function(dataset, line, phrase_col){
 }
 ```
 
-### A Small Test
+### 5. A Small Test
 
 ```{r}
 xmas2 |>
 sing_day(line = 3, phrase_col = Full.Phrase)
 ```
 
-### A Larger Test - The 12 Days of Christmas
+### 6. A Larger Test - The 12 Days of Christmas
 
 ```{r}
 map_chr(1:12, ~ sing_day(xmas2, .x, Full.Phrase)) |>
