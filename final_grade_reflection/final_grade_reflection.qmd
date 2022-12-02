@@ -9,21 +9,27 @@ editor: visual
 
 ## Accomplishment of Learning Targets
 
-Based on my progress in personal goals and my effort and accomplishments in the areas discussed below, I believe I deserve an A- in this course. Over the past six weeks I have strengthened my knowledge of R and R Studio through each preview activity, practice activity, lab assignment, and challenge problem. I have shown my proficiency in the majority of the learning targets and my desire to do better in areas that I do not feel as strong in. I can import data from a variety of formats which can be seen in the "setup" of Practice Activity 4, Practice Activity 5.2, and Lab 3. I can select necessary columns from a dataset, filter rows from a dataframe, modify existing variables and create new variables in a dataframe for a variety of data types, as shown in Practice Activity 3, Practice Activity 5.1, and question 6 on Lab 3. I can use mutating joins to combine multiple dataframes and filtering joins to filter rows from a dataframe; this can be seen in Lab 4 questions 2, 5, and 6.
+Based on my understanding of the material, my contribution to the classroom and my team, and my overall effort throughout the course, I believe I deserve an A in this class. Over these ten weeks I have strengthened my knowledge of R and R Studio with each preview activity, practice activity, lab assignment, and challenge problem and I have shown proficiency in the majority of the learning targets. 
 
-I am also proficient in data visualization and summarization. I can create visualizations for a variety of variable types, use plot modifications to make my visualization clear to the reader, and show creativity in my visualizations. All of these skills can be seen in Lab 4 questions 6 and 7, Lab 2 questions 9, 10, and 12, and almost all of Lab 5. I've shown that I can calculate numerical summaries of variables in Lab 4 question 6 and the "Familiar Words" section of Lab 3. I can find summaries of variables across multiple groups as I showed in Challenge 3 parts 2 and 3. I can create tables which make my summaries clear to the reader like in Lab 4 question 5 (finding top 5 regions), and Challenge 3 parts 2 and 3.
+WD-1 can be seen in the "setup" of Lab 3 and Lab 8. WD-2, WD-3, and WD-4 are demonstrated in Lab 3 questions 7, 10, 6 (respectively). My proficiency in WD-5 and WD-6 can be seen in Lab 4 question 2. WD-7 can be seen in Lab 4 question 7 and Lab 9 question 1. 
 
-Finally I have shown proficiency in reproducibility and efficiency of my code. I can create a reproducible analysis using RStudio projects, Quarto documents, and the here package as seen at the beginning of each lab when importing data with the "here" package and including the correct packages I can write well documented and tidy code which I try to always do but can be seen specifically in Lab 4 question 4. I can use iteration to reduce repetition in my code, like in Challenge 3 parts 2 and 3.
+DVS-1, DVS-2, and DVS-3 are shown in Lab 2 question 12, Lab 4 questions 5 and 6, and Lab 7 question 2. DVS-4, DVS-5, and DVS-6 can be seen in Challenge 3 question 3 and Lab 9 question 1. DVS-7 is shown in Challenge 9 questions 10 and 11.
+
+One example of how I have shown R-1 is in the first code chunk ("The Data") of Lab 7. R-2 can be seen in Lab 7 questions 2 and  7. I show R-3 in Lab 4 question 3 and Lab 7 question 7. 
+
+PE-1 is shown in Lab 4 question 3 and Lab 8 question 1. PE-2 and PE-3 can be seen in Lab 8 question 4. PE-4 is shown in Lab 5 question 8.
+
+DSM-1 can be seen in Practicec Avticity 9.2. DSM-2 is shown in Lab 9 questions 4 and 5. 
 
 ## Evidence of Continued Learning
 
 ### Extending My Thinking
 
-Each week I show my willingness and ability to extend my thinking through the completion of challenge problems where I dive deeper into a specific aspect of what we are learning that week to further my understanding of the topic. One example of this is the customization/challenge section of Lab 2 where I attempted to create and easier to read side by side box plot of the weights of different rodents by species including a color and label for the genus of that species as well as a customized color pallet.
+I have extended my thinking in this course through the completion of challenge problems as evidenced by the challenges I have chosen to include in my portfolio (Challenge 3, 7, 8 and 9) where I dive deeper into a specific aspect of teh corresponding lab to further my understanding of the topic. In 
 
 ### Revising My Thinking
 
-I am constantly revising my thinking by going back to old assignments and making improvements and working through preview activities multiple times to try to gain a better understanding of topics before coming to class. Each week I submit revisions to my labs and challenges based on the feedback provided by professor Theobold and my peers as well as the new knowledge I have gained in the time since the original submission. With these revisions, I write reflections about what I have learned from the changes and how I will use that knowledge moving forward. Good examples of how I have revised and extended my thinking include my Lab 3 and Lab 4 revision reflections.
+I am constantly revising my thinking by going back to old assignments and making improvements and working through preview activities multiple times to try to gain a better understanding of topics before coming to class. Each week I submit revisions to my labs and challenges based on the feedback provided by Dr. Theobold and my peers as well as the new knowledge I have gained in the time since the original submission. With these revisions, I write reflections about what I have learned from the changes and how I will use that knowledge moving forward. Good examples of how I have revised and extended my thinking include my Lab 3 and Lab 4 revision reflections.
 
 ## Growth as a Team Member
 
@@ -38,3 +44,7 @@ I have completed each assigned peer code review carefully and with thought. I un
 ## Attention to Personal Goals
 
 At the beginning of this course I set the goal of improving my data visualization skills. Over the past six weeks, I have learned how to add colors and labels to a graph, how to create many different kinds of graphs with ggplot, how to customize a legend or exclude it all together, and how to graph only certain specific aspects of the data by combining the use of ggplot with dplyer functions.  
+
+
+
+
