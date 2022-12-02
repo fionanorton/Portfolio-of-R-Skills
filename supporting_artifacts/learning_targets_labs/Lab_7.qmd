@@ -29,7 +29,7 @@ blackfootfish <- read.csv(here::here("supporting_artifacts", "datasets", "Blackf
 
 How many observations have missing values? And what variable(s) have missing values present?
 
-```{r}
+```{r summarize data}
 blackfootfish |> 
   summarize(across(.cols = everything(), 
                    .fns = ~sum(is.na(.))))
@@ -41,7 +41,7 @@ There are 1796 observations with missing values, all of these missing values are
 
 Create a thoughtful visualization exploring the frequency of missing values across the different years, sections, and trips.
 
-```{r}
+```{r visualization of NAs}
 blackfootfish |> 
   group_by(year, trip, section) |> 
   summarize("NA_count" = sum(is.na(weight))) |> 
@@ -56,7 +56,7 @@ blackfootfish |>
 
 ## 3. Task 1 - Writing a Function
 
-```{r}
+```{r rescale vector}
 rescale_01 <- function(vec) {
   stopifnot(is.numeric(vec))
   min <- min(vec, na.rm = TRUE)
@@ -109,7 +109,7 @@ blackfootfish |>
 
 ## 6. Task 4 -- Incorporating Variables
 
-```{r}
+```{r rescale column}
 rescale_column <- function(data, variable) {
   stopifnot(is.data.frame(data))
   data |> 
@@ -120,7 +120,7 @@ rescale_column <- function(data, variable) {
 
 ## 7. Task 5 - Another Function Test
 
-```{r}
+```{r rescale multiple columns}
 rescale_column <- function(data, variables) {
   stopifnot(is.data.frame(data))
   data |> 
