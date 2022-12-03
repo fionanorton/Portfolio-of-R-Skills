@@ -39,6 +39,8 @@
 
 ##### Practice Activity 5.2
 
+##### Practice Activity 9.2
+
 ### Demonstration of Continued Learning
 
 #### Revising My Thinking
