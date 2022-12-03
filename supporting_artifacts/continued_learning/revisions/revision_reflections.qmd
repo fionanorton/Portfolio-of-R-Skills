@@ -8,9 +8,15 @@ editor: visual
 
 ## Feedback from Dr. Theobold 
 
+### Question 1:
+
 "Careful! A professional looking report should not display messages about reading in the data or loading in package. These messages are not useful for the reader and make your document look cluttered."
 
+### Question 6:
+
 "Technically, both geom_point() and geom_jitter() are plotting points, so you are actually double plotting the points. You only need one of these geoms in your plot!"
+
+### Question 11:
 
 "You do not need to use the coord_flip() function to flip the coordinates of your plot. There is a much simpler way. Can you find it?"
 
@@ -22,6 +28,8 @@ One of my takeaways from the feedback I received on this lab was the importance 
 
 ## Feedback from Dr. Theobold 
 
+### Question 8:
+
 "Consider the nature of the data when plotting. Is every participant on one row? If not, what should you do with the data before plotting it?"
 
 ## My Revision Reflections
@@ -32,7 +40,11 @@ Through the feedback I received from professor Theobold I was able to improve my
 
 ## Feedback from Dr. Theobold 
 
+### Question 5:
+
 "I want your output to be the five cities with the most avocado sales. You found the top 5 regions and their names are stored in a dataframe. You should use this dataframe to filter rather than typing out the names a second time."
+
+### Question 6:
 
 "I want you to pivot your dataframe to obtain the the differences! I also wanted a plot visualizing the differences in avocado prices for these cities."
 
@@ -43,6 +55,7 @@ My revisions for this lab have helped me to fine tune my joining skills and make
 # Lab 7
 
 ## Feedback from Dr. Theobold 
+
 
 "Great function! I’d press you to think about the redundancy in your function. Is the same function being called multiple times? If so, how can you remove this redundancy?"
 
