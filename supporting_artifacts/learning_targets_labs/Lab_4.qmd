@@ -146,9 +146,9 @@ avocados_cali <- avocados_cities |>
 
 avocados_cali |> 
   group_by(region, type) |> 
-  summarize(avg.price = mean(AveragePrice)) |> 
-  summarize(difference = diff(avg.price), na.rm = TRUE) |> 
-  select(region, difference)
+  summarize(avg.price = mean(AveragePrice), .groups = "keep") |> 
+  pivot_wider(names_from = type, values_from = avg.price) |> 
+  mutate(difference = conventional - organic)
 ```
 
 ```{r}
