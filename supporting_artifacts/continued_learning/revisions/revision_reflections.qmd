@@ -2,6 +2,7 @@
 title: "Revisions"
 format: pdf
 editor: visual
+author: "Fiona Norton"
 ---
 
 # Lab 2 
@@ -56,8 +57,11 @@ My revisions for this lab have helped me to fine tune my joining skills and make
 
 ## Feedback from Dr. Theobold 
 
+### Question 3:
 
 "Great function! I’d press you to think about the redundancy in your function. Is the same function being called multiple times? If so, how can you remove this redundancy?"
+
+### Question 6:
 
 "Although these are great plots, I was hoping for something very simple, so it is as easy as possible to compare the distribution of lengths with rescaled lengths."
 
