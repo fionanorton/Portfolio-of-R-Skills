@@ -5,7 +5,7 @@ format: pdf
 editor: visual
 ---
 
-# Week 6 Grade Reflection
+# Final Grade Reflection
 
 ## Accomplishment of Learning Targets
 
@@ -19,29 +19,30 @@ One example of how I have shown R-1 is in the first code chunk ("The Data") of L
 
 PE-1 is shown in Lab 4 question 3 and Lab 8 question 1. PE-2 and PE-3 can be seen in Lab 8 question 4. PE-4 is shown in Lab 5 question 8.
 
-DSM-1 can be seen in Practicec Avticity 9.2. DSM-2 is shown in Lab 9 questions 4 and 5. 
+DSM-1 can be seen in Practice Avticity 9.2. DSM-2 is shown in Lab 9 questions 4 and 5. 
 
 ## Evidence of Continued Learning
 
 ### Extending My Thinking
 
-I have extended my thinking in this course through the completion of challenge problems as evidenced by the challenges I have chosen to include in my portfolio (Challenge 3, 7, 8 and 9) where I dive deeper into a specific aspect of teh corresponding lab to further my understanding of the topic. In 
+I have extended my thinking in this course through the completion of challenge problems as evidenced by the challenges I have chosen to include in my portfolio (Challenge 3, 7, 8 and 9). Here, I dive deeper into specific aspects of the corresponding labs to further my understanding of the material. For example, in Challenge 9, I used the kable function from the kableExtra package to create nicer looking html tables in questions 1, 2, 10 and 11. 
 
-### Revising My Thinking
+### Revising My Thinking 
 
-I am constantly revising my thinking by going back to old assignments and making improvements and working through preview activities multiple times to try to gain a better understanding of topics before coming to class. Each week I submit revisions to my labs and challenges based on the feedback provided by Dr. Theobold and my peers as well as the new knowledge I have gained in the time since the original submission. With these revisions, I write reflections about what I have learned from the changes and how I will use that knowledge moving forward. Good examples of how I have revised and extended my thinking include my Lab 3 and Lab 4 revision reflections.
+Throughout this course when given the opportunity to make revisions to my code, I have almost always taken advantage of that and attempted to improve my code and my understanding of R. This can be seen in the Revision Reflections document located in the revisions folder under Continued learning in my portfolio. Making revisions and reflecting on what I have learned from my revisions has changed the way I code. This is best shown by the feedback and revision reflections from Lab 7. I was told to condider how I could reduce the redundancy in my function and since then I have worked hard to make sure that when writing functions, they are as efficient as possible.
+
 
 ## Growth as a Team Member
 
-### Collaborative Group Work
+### Collaborative Group Work ** old**
 
 My growth as a team member throughout this course has mainly come as a result of our in class collaborative group work. Our group has created an environment where everyone feels safe to ask questions and speak their minds. Our completion of the practice activities is a reflection of how well we are working together. Although we do not explicitly assign roles each week, there is a natural rotation of the roles depending on who is feeling strongest in the topic for that week. That person emerges as the leader/captain for the week and the rest of us are happy to fall into other roles. It can be difficult for me to ask questions when I feel behind because I do not want to hold back the group but I have come to realize that explaining things to other people is helpful for everyone's learning so it is always good to ask questions.
 
-### Peer Code Review
+### Peer Code Review 
 
-I have completed each assigned peer code review carefully and with thought. I understand the importance of being kind to my peers but also realize that feedback is helpful so I try to give in depth reviews with words of encouragement. This can be seen in my peer reviews throughout the quarter.
+I have completed each assigned peer code review carefully and with thought. I provide specific feedback about code and try to tell my peers exactly where I think they could make improvements. A good example of my peer code review is from Week 4 which can be seen in my Peer Code document
 
-## Attention to Personal Goals
+## Attention to Personal Goals ** old**
 
 At the beginning of this course I set the goal of improving my data visualization skills. Over the past six weeks, I have learned how to add colors and labels to a graph, how to create many different kinds of graphs with ggplot, how to customize a legend or exclude it all together, and how to graph only certain specific aspects of the data by combining the use of ggplot with dplyer functions.  
 
