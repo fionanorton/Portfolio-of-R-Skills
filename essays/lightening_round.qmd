@@ -1,5 +1,30 @@
 ---
 title: "Lightening Round Essays"
-format: html
+format: pdf
 editor: visual
+author: "Fiona Norton"
 ---
+
+## Finish the sentence with another student’s name: “If [Student] doesn’t earn an A, then nobody should, because…” Explain your choice and your reasoning.
+
+If Camille Heathcock doesn't earn an A then nobody should because her understanding of R and her ability to complete the labs and challenges has improved every week throughout the quarter. I can't claim to know exactly how other people are performing in this class but having worked with Camille throughout the quarter and I see how much effort she puts in to retaining the material. She is also a great team member who always checks in with everyone in our group to ensure that we are all on the same page.
+
+## What was the most difficult part of the class for you? List a general topic, a specific problem, a kind of work we did, etc. and explain why.
+
+The most difficult part of the class for me was using the summarize and across functions to create smaller tables from the larger dataframe. This was difficult because I didn't always know which function to use in summarize() and often there were errors in these parts of my code that I had to work through.   
+
+## What was the easiest part of the class for you? Explain why.
+
+The easiest part of the class for me was writing functions because in the spring I took an introductory Python class that focused on writing functions with a lot less direction than Professor Theobold provides so this was relatively familiar and fresh in my brain. 
+
+## What part of the class surprised or interested you the most? Explain why.
+
+The part of class that interested me the most was the regression and data simulation in week 9 because I have taken many statistics classes where we need to create models and fit regressions so learning about efficient ways to do that in R was helpful; I wish we could have spent a little more time on this and other statistical features of R.
+
+## Give one piece of advice to a student just beginning a quarter of STAT 331 that will help them be successful in learning.
+
+The best way to be successful in this course is to think about all of the skills that you can take away at the end and carry with you through the rest of college and/or into a career if you do well in the class. The reason to do your best on every lab assignment and activity, to revise your work, and to put forth your full effort is so that at the end of the quarter you have a new skill, not to get an A (because we don't get grades anyways). 
+
+
+
+
