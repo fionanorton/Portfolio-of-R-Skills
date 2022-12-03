@@ -42,6 +42,8 @@ There are 1796 observations with missing values, all of these missing values are
 
 Create a thoughtful visualization exploring the frequency of missing values across the different years, sections, and trips.
 
+** This plot has new revisions **
+
 ```{r visualization of NAs}
 #| message: false
 blackfootfish |> 
@@ -51,7 +53,7 @@ blackfootfish |>
   geom_col() +
   facet_wrap(~trip) +
   labs(x = "Year", y = "", 
-       title = "Number of NAs in Each Year for Trip 1 vs. Trip 2 by Section")
+       title = "Number of NA Weights in Each Year for Trip 1 vs. Trip 2 by Section")
 ```
 
 # Part Two: Adjusting the Data (Function Writing)
