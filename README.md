@@ -31,14 +31,6 @@
 
 #### Practice Activities
 
-##### Practice Activity 3
-
-##### Practice Activity 4
-
-##### Practice Activity 5.1
-
-##### Practice Activity 5.2
-
 ##### Practice Activity 9.2
 
 ### Demonstration of Continued Learning
@@ -62,3 +54,5 @@
 ##### Challenge 8
 
 ### Growth as a Team Member
+
+#### Peer Code Review Lab 4
