@@ -39,8 +39,6 @@
 
 ##### Revisions Lab 2
 
-##### Revisions Lab 3
-
 ##### Revisions Lab 4
 
 ##### Revisions Lab 7
