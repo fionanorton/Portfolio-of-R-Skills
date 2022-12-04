@@ -7,7 +7,7 @@ author: "Fiona Norton"
 
 ## Finish the sentence with another student’s name: “If [Student] doesn’t earn an A, then nobody should, because…” Explain your choice and your reasoning.
 
-If Camille Heathcock doesn't earn an A then nobody should because her understanding of R and her ability to complete the labs and challenges has improved every week throughout the quarter. I can't claim to know exactly how other people are performing in this class but having worked with Camille throughout the quarter and I see how much effort she puts in to retaining the material. She is also a great team member who always checks in with everyone in our group to ensure that we are all on the same page.
+If Camille Heathcock doesn't earn an A then nobody should because her understanding of R and her ability to complete the labs and challenges has improved more and more each week of the quarter. I can't claim to know exactly how other people are performing in this class but having worked with Camille throughout the quarter and seeing how much effort she puts in to retaining the material I believe she deserves to do well. She is also a great team member who always checks in with everyone in our group to ensure that we are all on the same page.
 
 ## What was the most difficult part of the class for you? List a general topic, a specific problem, a kind of work we did, etc. and explain why.
 
@@ -23,7 +23,7 @@ The part of class that interested me the most was the regression and data simula
 
 ## Give one piece of advice to a student just beginning a quarter of STAT 331 that will help them be successful in learning.
 
-The best way to be successful in this course is to think about all of the skills that you can take away at the end and carry with you through the rest of college and/or into a career if you do well in the class. The reason to do your best on every lab assignment and activity, to revise your work, and to put forth your full effort is so that at the end of the quarter you have a new skill, not to get an A (because we don't get grades anyways). 
+The best way to be successful in this course is to think about all of the skills that you can take away at the end and carry with you through the rest of college and/or into a career if you do well in the class. The reason to do your best on every lab assignment and activity, to revise your work, and to put forth your full effort is so that at the end of the quarter you have a new skill, not to get an A (because we don't have grades anyways). 
 
 
 
