@@ -11,81 +11,94 @@ editor: visual
 
 ### Learning Targets
 
-#### Working with Data 
+#### Working with Data
 
-WD-1: I can import data from a variety of formats (e.g., csv, xlsx, txt, etc.).
-WD-2: I can select necessary columns from a dataset.
-WD-3: I can filter rows from a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date).
-WD-4: I can modify existing variables and create new variables in a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date).
-WD-5: I can use mutating joins to combine multiple dataframes.
-WD-6: I can use filtering joins to filter rows from a dataframe.
-WD-7: I can pivot dataframes from long to wide and visa versa
+WD-1: I can import data from a variety of formats (e.g., csv, xlsx, txt, etc.). 
+
+WD-2: I can select necessary columns from a dataset. 
+
+WD-3: I can filter rows from a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date). 
+
+WD-4: I can modify existing variables and create new variables in a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date). 
+
+WD-5: I can use mutating joins to combine multiple dataframes. 
+
+WD-6: I can use filtering joins to filter rows from a dataframe. 
+
+WD-7: I can pivot dataframes from long to wide and visa versa.
 
 #### Data Visualization and Summarization
 
-DVS-1: I can create visualizations for a variety of variable types.
-DVS-2: I use plot modifications to make my visualization clear to the reader.
-DVS-3: I show creativity in my visualizations
-DVS-4: I can calculate numerical summaries of variables.
-DVS-5: I can find summaries of variables across multiple groups.
-DVS-6: I can create tables which make my summaries clear to the reader.
+DVS-1: I can create visualizations for a variety of variable types. 
+
+DVS-2: I use plot modifications to make my visualization clear to the reader. 
+
+DVS-3: I show creativity in my visualizations.s
+
+DVS-4: I can calculate numerical summaries of variables. 
+
+DVS-5: I can find summaries of variables across multiple groups. 
+
+DVS-6: I can create tables which make my summaries clear to the reader. 
+
 DVS-7: I show creativity in my tables.
 
-#### Reproducibility 
+#### Reproducibility
 
-R-1: I can create a professional looking, reproducible analysis using RStudio projects, Quarto documents, and the here package.
-R-2: I can write well documented and tidy code.
+R-1: I can create a professional looking, reproducible analysis using RStudio projects, Quarto documents, and the here package. 
+
+R-2: I can write well documented and tidy code. 
+
 R-3: I can write robust programs that are resistant to changes in inputs.
 
 #### Program Efficiency
 
-PE-1: I can write concise code which does not repeat itself.
-PE-2: I can write functions to reduce repetition in my code.
-PE-3:I can use iteration to reduce repetition in my code.
+PE-1: I can write concise code which does not repeat itself. 
+
+PE-2: I can write functions to reduce repetition in my code. 
+
+PE-3:I can use iteration to reduce repetition in my code. 
+
 PE-4: I can use modern tools when carrying out my analysis.
 
 #### Data Simulation and Modeling
 
-DSM-1: I can simulate data from a variety of probability models.
+DSM-1: I can simulate data from a variety of probability models. 
+
 DSM-2: I can fit a linear regression and extract necessary summary measures.
 
-### Evidence 
+### Evidence
 
-WD-1 can be seen in the "setup" of Lab 3 and Lab 8. WD-2, WD-3, and WD-4 are demonstrated in Lab 3 questions 7, 10, and 6 (respectively). My proficiency in WD-5 and WD-6 can be seen in Lab 4 question 2. WD-7 can be seen in Lab 4 question 7 and Lab 9 question 1. 
+WD-1 can be seen in the "setup" of Lab 3 and Lab 8. WD-2, WD-3, and WD-4 are demonstrated in Lab 3 questions 7, 10, and 6 (respectively). My proficiency in WD-5 and WD-6 can be seen in Lab 4 question 2. WD-7 can be seen in Lab 4 question 7 and Lab 9 question 1.
 
 DVS-1, DVS-2, and DVS-3 are shown in Lab 2 question 12, Lab 4 questions 5 and 6, and Lab 7 question 2. DVS-4, DVS-5, and DVS-6 can be seen in Challenge 3 question 3 and Lab 9 question 1. DVS-7 is shown in Challenge 9 questions 10 and 11.
 
-One example of how I have shown R-1 is in the first code chunk ("The Data") of Lab 7. R-2 can be seen in Lab 7 questions 2 and  7. I show R-3 in Lab 4 question 3 and Lab 7 question 7. 
+One example of how I have shown R-1 is in the first code chunk ("The Data") of Lab 7. R-2 can be seen in Lab 7 questions 2 and 7. I show R-3 in Lab 4 question 3 and Lab 7 question 7.
 
 PE-1 is shown in Lab 4 question 3 and Lab 8 question 1. PE-2 and PE-3 can be seen in Lab 8 question 4. PE-4 is shown in Lab 5 question 8.
 
-DSM-1 can be seen in Practice Avticity 9.2. DSM-2 is shown in Lab 9 questions 4 and 5. 
+DSM-1 can be seen in Practice Avticity 9.2. DSM-2 is shown in Lab 9 questions 4 and 5.
 
 ## Evidence of Continued Learning
 
 ### Extending My Thinking
 
-I have extended my thinking in this course through the completion of challenge problems as evidenced by the challenges I have chosen to include in my portfolio (Challenge 3, 7, 8 and 9). Here, I dive deeper into specific aspects of the corresponding labs to further my understanding of the material. For example, in Challenge 9, I used the kable function from the kableExtra package to create nicer looking html tables in questions 1, 2, 10 and 11. 
+I have extended my thinking in this course through the completion of challenge problems as evidenced by the challenges I have chosen to include in my portfolio (Challenge 3, 7, 8 and 9). Here, I dive deeper into specific aspects of the corresponding labs to further my understanding of the material. For example, in Challenge 9, I used the kable function from the kableExtra package to create nicer looking html tables in questions 1, 2, 10 and 11.
 
-### Revising My Thinking 
+### Revising My Thinking
 
 Throughout STAT 331, when given the opportunity to make revisions to my code, I have almost always taken advantage of that and attempted to improve my code and my understanding of R. Making revisions and reflecting on what I have learned from my revisions has made me a better student and each piece of feedback I have received has made me a more efficient data scientist. This is best shown by the feedback and revision reflections from Labs 2, 4 and 7 which can be seen in the Revisions folder under Continued Learning. All of these labs provided me with feedback that I now consider every time I code. Specifically in Lab 7 I was told to consider how I could reduce the redundancy in a specific function I wrote and since then I have worked hard to make sure that when writing any function, it is as efficient as possible and I do not repeat anything within the function.
 
-
 ## Growth as a Team Member
 
-### Collaborative Group Work 
+### Collaborative Group Work
 
 The collaborative group work in STAT 331 has made me a better team member. It has improved my ability to ask questions and explain my thinking. Each week a leader emerged from our team, someone who felt confident in their ability to complete the task at hand. The other three group members would then fall into other roles. My team is supportive and driven; together we have been able to successfully complete every practice activity and contribute to a positive classroom environment.
 
-### Peer Code Review 
+### Peer Code Review
 
 I completed each assigned peer code review carefully and with thought. I provide specific feedback about code and try to tell my peers exactly where I think they could make improvements. This process is helpful for them but also for me because I have improved my ability to read and understand code. A good example of my peer code review is from Week 4 which can be seen in my Growth as a Team Member folder.
 
-## Attention to Personal Goals 
+## Attention to Personal Goals
 
-I made major progress in accomplishing my personal goals for the quarter. I am able to create easy to read, helpful, and relevant data visualizations and tables. I have a much better understanding of quarto documents, R projects, and GitHub. Overall I feel much more prepared to code in R than I did at the beginning of the quarter because I can do it more efficiently with the new skills I have learned in this class. 
-
-
-
-
+I made major progress in accomplishing my personal goals for the quarter. I am able to create easy to read, helpful, and relevant data visualizations and tables. I have a much better understanding of quarto documents, R projects, and GitHub. Overall I feel much more prepared to code in R than I did at the beginning of the quarter because I can do it more efficiently with the new skills I have learned in this class.
