@@ -57,7 +57,7 @@ PE-1: I can write concise code which does not repeat itself.
 
 PE-2: I can write functions to reduce repetition in my code. 
 
-PE-3:I can use iteration to reduce repetition in my code. 
+PE-3: I can use iteration to reduce repetition in my code. 
 
 PE-4: I can use modern tools when carrying out my analysis.
 
