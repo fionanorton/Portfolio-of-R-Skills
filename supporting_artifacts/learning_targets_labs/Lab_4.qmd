@@ -136,7 +136,8 @@ The following four California regions are in this dataset: "LosAngeles", "SanDie
 
 ## 6. In which regions is the price of organic versus conventional avocados most different? Support your answer with a few summary statistics and a visualization.
 
-** This table is a new revision **
+\*\* This table is a new revision \*\*
+
 ```{r}
 #| message: false
 cali_regions <- data.frame("region" = c("LosAngeles", "SanDiego", "Sacramento", "SanFrancisco"))

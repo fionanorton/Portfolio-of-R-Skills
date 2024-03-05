@@ -68,7 +68,7 @@ make_phrase <- function(num_word, item, verb, adjective, location) {
 }
 ```
 
-## 3. Creating the new data 
+## 3. Creating the new data
 
 ```{r xmas2}
 xmas2 <- xmas |> 
